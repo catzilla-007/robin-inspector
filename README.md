@@ -1,4 +1,3 @@
-# robin-inspector
-A raspberry pi flask server that collects information in hydrophonics sensors
+# Robin Inspector
 
-Initial Commit
+A flask server deployed in raspberry pi that collects information from sensors used in hydrophonics.
