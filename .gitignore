@@ -1,3 +1,5 @@
+# environment
+.env
 
 # Flask stuff:
 instance/
