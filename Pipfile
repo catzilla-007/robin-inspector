@@ -5,8 +5,12 @@ name = "pypi"
 
 [packages]
 flask = "*"
+python-dotenv = "*"
 
 [dev-packages]
 
 [requires]
 python_version = "3.9"
+
+[scripts]
+server = "flask run"
