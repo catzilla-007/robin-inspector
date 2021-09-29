@@ -4,8 +4,8 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-flask = "*"
-python-dotenv = "*"
+fastapi = "*"
+uvicorn = "*"
 
 [dev-packages]
 
@@ -13,4 +13,4 @@ python-dotenv = "*"
 python_version = "3.9"
 
 [scripts]
-server = "flask run"
+server = "uvicorn main:app --reload"
