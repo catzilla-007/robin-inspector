@@ -1,9 +1,9 @@
 from fastapi import FastAPI
 
-app = FastAPI()
+api = FastAPI()
 
 
-@app.get('/api/v1/nft/{nft_id}/water-level')
+@api.get('/api/v1/nft/{nft_id}/water-level')
 def get_water_level(nft_id: int):
     return {
         'timestamp': '2021-03-22 10:22:11',
