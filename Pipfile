@@ -13,4 +13,5 @@ uvicorn = "*"
 python_version = "3.9"
 
 [scripts]
-server = "uvicorn main:app --reload"
+server = "uvicorn app.main:api --reload"
+
