@@ -5,3 +5,4 @@ A FastAPI server deployed in raspberry pi that collects information from sensors
 
 /api/v1/water-level
 /api/v1/water-temperature
+/api/v1/tds
