@@ -8,10 +8,11 @@ fastapi = "*"
 uvicorn = "*"
 
 [dev-packages]
+pytest = "*"
 
 [requires]
 python_version = "3.9"
 
 [scripts]
 server = "uvicorn app.main:api --reload"
-
+test = "pytest test"
