@@ -4,7 +4,7 @@ from app.core.response import Response
 from app.sensors.water_level import WaterLevel
 
 
-def test_water_level():
+def test_get_water_level():
     water_level = WaterLevel()
     expected = Response(
         type=water_level.TYPE,
