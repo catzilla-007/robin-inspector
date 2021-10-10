@@ -13,9 +13,4 @@ router = APIRouter(prefix=PREFIX, tags=['v1'], responses={404: NOT_FOUND})
 
 @router.get('/water-level', tags=['water-level'], response_model=Response)
 async def get_water_level():
-    water_level = SensorFactory.get_sensor(Sensors.WATER_LEVEL)
-
-    return Response(
-        value=water_level.get_value(),
-        type=water_level.TYPE,
-    )
+    return SensorFactory.get_sensor(Sensors.WATER_LEVEL).get_value()
