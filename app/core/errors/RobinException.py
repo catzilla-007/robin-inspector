@@ -1,0 +1,2 @@
+class RobinException(Exception):
+    pass

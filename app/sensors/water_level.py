@@ -1,13 +1,21 @@
-# might need to have a specific parent class
-class WaterLevel(object):
-    TYPE = 'water-level'
+from enum import Enum
 
-    async def get_water_level(self):
-        # gets water level from gpio and translates it to the desired value
-        return 'normal'
+from app.core.sensor import Sensor
+from app.core.response import Response
+from . import Sensors
 
-    async def change_water_level(self, level: str):
-        # for version 2
-        # adjusts water level, then a worker will constantly
-        # watch until the certain water level is reached
-        return level
+
+class WaterLevels(Enum):
+    NORMAL = 'normal'
+    LOW = 'low'
+    HIGH = 'high'
+
+
+class WaterLevel(Sensor):
+    TYPE = Sensors.WATER_LEVEL
+
+    def collect_value(self) -> Response:
+        return Response(
+            type=self.TYPE,
+            value=WaterLevels.HIGH.value
+        )
