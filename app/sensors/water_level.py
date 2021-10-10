@@ -14,4 +14,4 @@ class WaterLevel(Sensor):
     TYPE = Sensors.WATER_LEVEL
 
     def collect_value(self) -> WaterLevels:
-        return WaterLevels.HIGH
+        return WaterLevels.HIGH.value
