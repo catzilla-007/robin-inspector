@@ -2,8 +2,20 @@
 
 A FastAPI server deployed in raspberry pi that collects information from sensors used in hydrophonics.
 
+Sensors are connected to an arduino microcontroller and a serial connection to the raspberry pi will be used
+for getting data in the sensors.
 
-/api/v1/water-level
-/api/v1/water-temperature
-/api/v1/tds
-/api/air-temperature
+### Available Endpoints
+
+```
+GET /api/v1/water-level
+```
+
+Response
+```json
+{
+  "timestamp": "2022-03-22 15:33:32",
+  "value": "50%",
+  "type": "water-level"
+}
+```
