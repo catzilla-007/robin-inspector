@@ -11,7 +11,7 @@ uvicorn = "*"
 pytest = "*"
 
 [requires]
-python_version = "3.9"
+python_version = "3.10"
 
 [scripts]
 server = "uvicorn app.main:api --reload"
