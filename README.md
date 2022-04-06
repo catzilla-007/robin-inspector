@@ -20,17 +20,17 @@ Response
 
 ```json
 {
-  "totalFrankys": 3,
-  "activeFrankys": 1,
+  "totalArduinos": 3,
+  "activeArduinos": 1,
   "version": "1.0.3",
   "serverStartedOn": "time"
 }
 ```
 
-### Get status of Frankys
+### Get status of Arduinos
 
 ```
-GET /api/v1/frankys
+GET /api/v1/arduinos
 ```
 
 Response
@@ -59,10 +59,10 @@ Response
   }
 ]
 ```
-### Get status of a specific Franky
+### Get status of a specific Arduino
 
 ```
-GET /api/v1/frankys/<uuid>
+GET /api/v1/arduino/<uuid>
 ```
 
 Response
@@ -80,10 +80,10 @@ Response
 }
 ```
 
-### Create a Franky
+### Create an Arduino
 
 ```
-POST /api/v1/frankys
+POST /api/v1/arduinos
 ```
 
 Body
@@ -111,10 +111,10 @@ Response
 }
 ```
 
-### Delete a Franky
+### Delete an Arduino
 
 ```
-DELETE /api/v1/frankys/<uuid>
+DELETE /api/v1/arduinos/<uuid>
 ```
 
 Response 
@@ -125,10 +125,10 @@ Response
 }
 ```
 
-### Start a Franky
+### Start sensor collection of an Arduino
 
 ```
-POST /api/v1/frankys/<uuid>/start
+POST /api/v1/arduinos/<uuid>/start
 ```
 
 Response
@@ -141,10 +141,10 @@ Response
 }
 ```
 
-### Stop a Franky
+### Stop sensor collection of an Arduino
 
 ```
-POST /api/v1/frankys/<uuid>/stop
+POST /api/v1/arduino/<uuid>/stop
 ```
 
 Response
