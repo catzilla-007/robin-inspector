@@ -2,12 +2,12 @@ from os import getenv
 from enum import Enum
 
 
-class Config(Enum):
+class ConfigNames(Enum):
     DB_HOST = 'DB_HOST'
     DB_NAME = 'DB_NAME'
 
 
-class Environment:
+class Config:
     @staticmethod
-    def get(config: Config):
+    def get(config: ConfigNames):
         return getenv(config)

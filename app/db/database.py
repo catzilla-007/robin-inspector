@@ -1,5 +1,5 @@
 from mongoengine import connect, disconnect
-from app.env.environment import Config, Environment
+from app.config.config import ConfigNames, Config
 
 
 class Database:
@@ -7,8 +7,8 @@ class Database:
     def connect():
         try:
             print('connecting to database')
-            db = Environment.get(Config.DB_NAME.value)
-            host = Environment.get(Config.DB_HOST.value)
+            db = Config.get(ConfigNames.DB_NAME.value)
+            host = Config.get(ConfigNames.DB_HOST.value)
             connect(db, host=host)
             print('connected')
         except Exception as e:
