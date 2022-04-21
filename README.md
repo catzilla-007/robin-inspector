@@ -127,11 +127,11 @@ Response
 
 ### Start sensor collection of an Arduino
 
+This will send a message to a message broker for starting arduino collection
+
 ```
 POST /api/v1/arduinos/<uuid>/start
 ```
-
-Response
 
 ```json
 {
@@ -142,6 +142,8 @@ Response
 ```
 
 ### Stop sensor collection of an Arduino
+
+This will send a message to a message broker for stopping arduino collection
 
 ```
 POST /api/v1/arduino/<uuid>/stop
