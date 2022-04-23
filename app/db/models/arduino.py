@@ -8,3 +8,5 @@ class Arduino(BaseModel):
     ip = StringField(required=True)
     port = IntField(default=80)
     state = StringField(default="inactive")
+
+    meta = {'collection': 'arduino'}

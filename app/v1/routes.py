@@ -4,6 +4,10 @@ from app.core.sensor_factory import SensorFactory
 from app.core.response import Response
 from app.sensors import Sensors
 
+from app.db.models.arduino import Arduino
+
+from .models.arduino import ArduinoRequest
+
 
 PREFIX = '/api/v1'
 NOT_FOUND = {'description': 'NOT FOUND'}
@@ -67,8 +71,18 @@ async def get_arduino():
 
 
 @router.post('/arduinos', tags=['arduino'])
-async def create_arduino():
-    return {
-        'arduino': 1,
-    }
+async def create_arduino(request: ArduinoRequest):
+    arduino = Arduino(
+        name=request.name,
+        ip=request.ip,
+        port=request.port,
+    )
 
+    arduino.save()
+
+    return {
+        'id': str(arduino.id),
+        'name': arduino.name,
+        'ip': arduino.ip,
+        'port': arduino.port,
+    }

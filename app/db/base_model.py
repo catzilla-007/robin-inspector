@@ -1,9 +1,10 @@
-from mongoengine import Document, DateField
+from mongoengine import Document, DateTimeField
+from datetime import datetime
 
 
 class BaseModel(Document):
-    created_at = DateField(required=True)
-    updated_at = DateField(required=True)
-    deleted_at = DateField()
+    meta = {'abstract': True}
 
-    # TODO: add rules for updating created_at, updated_at, deleted_at
+    created_at = DateTimeField(default=datetime.utcnow())
+    updated_at = DateTimeField(default=datetime.utcnow())
+    deleted_at = DateTimeField()
