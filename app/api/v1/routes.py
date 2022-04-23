@@ -6,13 +6,11 @@ from app.sensors import Sensors
 
 from app.db.models.arduino import Arduino
 
-from .models.arduino import ArduinoRequest
+from app.api.models.arduino import ArduinoRequest
 
-
-PREFIX = '/api/v1'
 NOT_FOUND = {'description': 'NOT FOUND'}
 
-router = APIRouter(prefix=PREFIX, tags=['v1'], responses={404: NOT_FOUND})
+router = APIRouter(responses={404: NOT_FOUND})
 
 
 @router.get('/water-level', tags=['water-level', 'sensor'], response_model=Response)

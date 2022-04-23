@@ -1,9 +1,9 @@
 from fastapi import FastAPI
-from app import v1
+from app.api import api
 
 from app.db.database import Database
 
 Database.connect()
-api = FastAPI()
+server = FastAPI()
 
-api.include_router(v1.router)
+server.include_router(api)
