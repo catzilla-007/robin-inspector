@@ -82,5 +82,6 @@ async def create_arduino(request: ArduinoRequest):
         'id': str(arduino.id),
         'name': arduino.name,
         'ip': arduino.ip,
+        'state': arduino.state,
         'port': arduino.port,
     }

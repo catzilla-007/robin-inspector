@@ -20,10 +20,12 @@ Response
 
 ```json
 {
-  "totalArduinos": 3,
-  "activeArduinos": 1,
+  "arduino": {
+    "count": 3,
+    "active": 2
+  },
   "version": "1.0.3",
-  "serverStartedOn": "time"
+  "startedOn": "timestamp"
 }
 ```
 
@@ -40,9 +42,8 @@ Response
   {
     "id": "uuid",
     "name": "franky-1",
-    "state": "active",
-    "connection": "connected",
-    "startedOn": "time",
+    "status": "active",
+    "startedOn": "timestamp",
     "stoppedOn": null,
     "ip": "192.168.1.3",
     "port": 80
@@ -50,8 +51,7 @@ Response
   {
     "id": "uuid",
     "name": "franky-2",
-    "state": "inactive",
-    "connection": "disconnected",
+    "status": "inactive",
     "startedOn": null,
     "stoppedOn": null,
     "ip": "192.168.1.2",
@@ -62,7 +62,7 @@ Response
 ### Get status of a specific Arduino
 
 ```
-GET /api/v1/arduino/<uuid>
+GET /api/v1/arduinos/<uuid>
 ```
 
 Response
@@ -71,9 +71,8 @@ Response
 {
   "id": "uuid",
   "name": "franky-3",
-  "state": "active",
-  "connection": "reachable",
-  "startedOn": "time",
+  "status": "active",
+  "startedOn": "timestamp",
   "stoppedOn": null,
   "ip": "192.168.1.4",
   "port": 80
@@ -86,7 +85,7 @@ Response
 POST /api/v1/arduinos
 ```
 
-Body
+Request
 
 ```json
 {
@@ -102,10 +101,7 @@ Response
 {
   "id": "uuid",
   "name": "Franky-4",
-  "state": "inactive",
-  "connection": "reachable",
-  "startedOn": null,
-  "stoppedOn": null,
+  "status": "inactive",
   "ip": "192.168.10.1",
   "port": 80
 }
@@ -133,11 +129,13 @@ This will send a message to a message broker for starting arduino collection
 POST /api/v1/arduinos/<uuid>/start
 ```
 
+Response
+
 ```json
 {
-  "state": "active",
+  "status": "active",
   "connection": "connected",
-  "startedOn": "time"
+  "startedOn": "timestamp"
 }
 ```
 
@@ -153,9 +151,8 @@ Response
 
 ```json
 {
-  "state": "inactive",
-  "connection": "disconnected",
-  "startedOn": "time",
-  "stoppedOn": "time"
+  "status": "inactive",
+  "startedOn": "timestamp",
+  "stoppedOn": "timestamp"
 }
 ```
