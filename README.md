@@ -22,7 +22,8 @@ Response
 {
   "arduino": {
     "count": 3,
-    "active": 2
+    "connected": 2,
+    "active": 1
   },
   "version": "1.0.3",
   "startedOn": "timestamp"
@@ -43,18 +44,20 @@ Response
     "id": "uuid",
     "name": "franky-1",
     "status": "active",
+    "connection": "connected",
     "startedOn": "timestamp",
     "stoppedOn": null,
-    "ip": "192.168.1.3",
+    "host": "192.168.1.3",
     "port": 80
   },
   {
     "id": "uuid",
     "name": "franky-2",
     "status": "inactive",
+    "connection": "disconnected",
     "startedOn": null,
     "stoppedOn": null,
-    "ip": "192.168.1.2",
+    "host": "192.168.1.2",
     "port": 80
   }
 ]
@@ -72,9 +75,10 @@ Response
   "id": "uuid",
   "name": "franky-3",
   "status": "active",
+  "connection": "connected",
   "startedOn": "timestamp",
   "stoppedOn": null,
-  "ip": "192.168.1.4",
+  "host": "192.168.1.4",
   "port": 80
 }
 ```
@@ -90,7 +94,7 @@ Request
 ```json
 {
   "name": "Franky-4",
-  "ip": "192.168.10.1",
+  "host": "192.168.10.1",
   "port": 80
 }
 ```
@@ -102,7 +106,8 @@ Response
   "id": "uuid",
   "name": "Franky-4",
   "status": "inactive",
-  "ip": "192.168.10.1",
+  "connection": "connected",
+  "host": "192.168.10.1",
   "port": 80
 }
 ```
@@ -156,3 +161,117 @@ Response
   "stoppedOn": "timestamp"
 }
 ```
+
+
+## DB Schemas
+
+
+#### BaseModel
+
+all DB collections will extend base model
+
+```json
+{
+  "id": "uuid",
+  "createdAt": "timestamp",
+  "updatedAt": "timestamp",
+  "deletedAt": "timestamp"
+}
+```
+
+#### Arduinos
+
+Stores information of arduinos connected to the hydrophonics and robin-inspector.
+This is also used to start/stop collection of information
+
+```json
+{
+  "name": "string",
+  "host": "ip",
+  "port": "port",
+  "status": "active | inactive",
+  "connection": "connected | disconnected"
+}
+```
+
+#### Plants
+
+Stores information of the plants planted.
+
+```json
+{
+  "name": "random name?",
+  "plant": "type of plant planted",
+  "plantedOn": "when it is planted",
+  "substrate": "what material is used for planting",
+  "harvestedOn": "when it is harvested",
+  "arduino": "ref#arduinos: what arduino is used to record this"
+}
+```
+
+#### Sensor Data
+
+```json
+{
+  "arduino": "ref#arduinos",
+  "batch": "ref#batch",
+  "sensors": [
+    "temperature",
+    "waterTemperature",
+    "ph",
+    "tds",
+    "waterLevel",
+    "light",
+    "humidity"
+  ],
+  "temperature": {
+    "value": "number",
+    "unit": "celcius"
+  },
+  "waterTemperature": {
+    "value": "number",
+    "unit": "celcius"
+  },
+  "ph": {
+    "value": "number",
+    "unit": "ph"
+  },
+  "tds": {
+    "value": "number",
+    "unit": "ppm"
+  },
+  "waterLevel": {
+    "value": "low | normal | high",
+    "unit": ""
+  },
+  "light": {
+    "value": "number",
+    "unit": "lumens"
+  },
+  "humidity": {
+    "value": "number",
+    "unit": "%"
+  }
+}
+```
+
+future sensors
+- gpm - gallons per minute
+- ec - electrical current - how much salt
+
+
+## Data Parameters
+
+status
+- `active`
+  - collection is enabled
+- `inactive`
+  - collection is disabled
+
+connection
+- `connected`
+  - device is reachable from the server
+- `disconnected`
+  - device is not reachable from the server
+
+  
